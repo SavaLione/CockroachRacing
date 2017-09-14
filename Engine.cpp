@@ -480,3 +480,4 @@ inline void print_select_cockroach(int choice, int money) {
 		}
 	}
 }
+//Do not look at switch
