@@ -292,24 +292,4 @@ void v_win(int i_win) {
 			break;
 		}
 	}
-	while (b_fl) {
-		int x = _getch();
-		switch (x) {
-			case 32: {
-			b_fl = false;
-			break;
-		}
-			case 13: {
-			b_fl = false;
-			break;
-		}
-			case 80: {
-			b_fl = false;
-			break;
-		}
-			default: {
-			break;
-		}
-		}
-	}
 }

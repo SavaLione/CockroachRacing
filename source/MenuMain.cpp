@@ -52,7 +52,6 @@ void point2() {
 void point3() {
 	system("cls");
 	v_crew();
-	return;
 }
 
 void v_menu_main() {
@@ -84,8 +83,8 @@ void v_menu_main() {
 						break;
 					}
 			}
-			break;
-		}
+				break;
+			}
 			case 32: {
 				switch (ch) {
 					case 1: {

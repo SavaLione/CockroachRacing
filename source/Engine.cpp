@@ -195,9 +195,11 @@ void v_startgame() {
 				if (i_win == choice) {
 					v_win(12);
 					money += 100;
+					Sleep(750);
 				} else {
 					v_win(10);
 					money -= 50;
+					Sleep(750);
 				}
 				break;
 			}
@@ -208,21 +210,22 @@ void v_startgame() {
 				Sleep(750);
 				if (i_win == choice) {
 					v_win(12);
+					Sleep(750);
 					money += 100;
 				} else {
 					v_win(10);
+					Sleep(750);
 					money -= 50;
 				}
 				break;
 			}
 				case 27: {
-				selected = true;
-				b_fl = false;
-				b_fl_1 = false;
-				system("cls");
-				v_win(11);
-
-				break;
+					selected = true;
+					b_fl = false;
+					b_fl_1 = false;
+					system("cls");
+					v_win(11);
+					break;
 			}
 			}
 		}
