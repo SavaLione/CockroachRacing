@@ -372,7 +372,7 @@ void v_autors(int i_autors) {
 }
 
 void v_crew() {
-	int i_sleep = 160;
+	int i_sleep = 100;
 	{
 		Sleep(i_sleep);
 		cout << "  _____             _       _               " << endl;
@@ -388,7 +388,6 @@ void v_crew() {
 		cout << " |_____/ \\__,_|_|  |_|\\__,_|_|\\_\\___/|_| |_|" << endl;
 		Sleep(i_sleep);
 	}
-
 	{
 		Sleep(i_sleep);
 		cout << "   _____                  _      _                  " << endl;
@@ -404,7 +403,6 @@ void v_crew() {
 		cout << " |_____/ \\__,_| \\_/ \\__,_|______|_|\\___/|_| |_|\\___|" << endl;
 		Sleep(i_sleep);
 	}
-
 	{
 		Sleep(i_sleep);
 		cout << "  ____                  _ _ _   " << endl;
@@ -420,7 +418,6 @@ void v_crew() {
 		cout << " |____/ \\__,_|_| |_|\\__,_|_|\\__|" << endl;
 		Sleep(i_sleep);
 	}
-
 	{
 		Sleep(i_sleep);
 		cout << "  _                           " << endl;
