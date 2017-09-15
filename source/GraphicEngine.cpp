@@ -5,6 +5,7 @@
 using namespace std;
 void v_small(int i_arg);
 void v_static();
+
 void v_engine_graphic(const int i_max1, const int i_max2, int i_m1, int i_m2, int(&i_m2_stroke)[6][101], int i_win, int i_win_stroke) {
 	string s_bug = "<@><";
 	for (int i_stroke = -2; i_stroke <= i_win_stroke; i_stroke++) {

@@ -16,23 +16,30 @@ inline void print_menu(int choice) {
 	string point[5] = { "Play" , "Help", "Crew" , "Exit", " " };
 	v_print();
 	v_logo();
-	for (int i = 1; i < 5; i++)
+	for (int i = 1; i < 5; i++) {
 		cout << endl;
+	}
 	for (int i = 1; i < 6; i++) {
-		if (i == choice) cout << "             <";
-		else if (i - 1 == choice)cout << ">             ";
-		else cout << "              ";
+		if (i == choice) {
+			cout << "             <";
+		} else if (i - 1 == choice) {
+			cout << ">             ";
+		} else {
+			cout << "              ";
+		}
 		cout << point[i - 1];
 	}
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 4; i++) {
 		cout << endl;
+	}
 	v_print_footer();
 }
-void point1()
-{
+
+void point1() {
 	system("cls");
 	v_startgame();
 }
+
 void point2() {
 	system("cls");
 	v_print();
@@ -42,8 +49,8 @@ void point2() {
 	//THERE IS NO HOPE IN THIS HELL. NO HOPE AT ALL
 	//SOOTHED. SEDATED
 }
-void point3()
-{
+
+void point3() {
 	system("cls");
 	v_crew();
 }
@@ -54,43 +61,78 @@ void v_menu_main() {
 	print_menu(ch);
 	while (!game) {
 		int x = _getch();
-		//cout << x;
 		switch (x) {
-		case 13:
+			case 13: {
 			switch (ch) {
-			case 1: point1();
-				break;
-			case 2: point2();
-				break;
-			case 3: point3();
-				break;
-			case 4: game = true;
+				case 1: {
+				point1();
 				break;
 			}
-			break;
-		case 32:
-			switch (ch) {
-			case 1: point1();
-				break;
-			case 2: point2();
-				break;
-			case 3: point3();
-				break;
-			case 4: game = true;
+				case 2: {
+				point2();
 				break;
 			}
+				case 3: {
+				point3();
+				break;
+			}
+				case 4: {
+				game = true;
+				break;
+			}
+				default: {
+				break;
+			}
+			}
 			break;
-		case 224:
+		}
+			case 32: {
+			switch (ch) {
+				case 1: {
+				point1();
+				break;
+			}
+				case 2: {
+				point2();
+				break;
+			}
+				case 3: {
+				point3();
+				break;
+			}
+				case 4: {
+				game = true;
+				break;
+			}
+				default: {
+				break;
+			}
+			}
+			break;
+		}
+			case 224: {
 			x = _getch();
-			if (x == 77)
-				if (ch != 4) ch++;
-				else ch = 1;
-				if (x == 75)
-					if (ch != 1) ch--;
-					else ch = 4;
-					print_menu(ch);
-					break;
-		default: ch = 1; print_menu(ch);
+			if (x == 77) {
+				if (ch != 4) {
+					ch++;
+				} else {
+					ch = 1;
+				}
+			}
+			if (x == 75) {
+				if (ch != 1) {
+					ch--;
+				} else {
+					ch = 4;
+				}
+			}
+			print_menu(ch);
+			break;
+		}
+			default: {
+			ch = 1; print_menu(ch);
+			break;
+		}
 		}
 	}
 }
