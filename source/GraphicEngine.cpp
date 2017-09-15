@@ -372,7 +372,7 @@ void v_autors(int i_autors) {
 }
 
 void v_crew() {
-	int i_sleep = 160;
+	int i_sleep = 100;
 	{
 		Sleep(i_sleep);
 		cout << "  _____             _       _               " << endl;
