@@ -1,11 +1,21 @@
 #include <iostream>
+#include <thread>
+#include <conio.h>
 #include <Windows.h>
 using namespace std;
+void v_thread(bool &b_fl);
 
 void v_crew() {
 	int i_sleep = 100, i_lines = 28;
 	bool b_fl = true;
-	for (int i = 0; i <= i_lines; i++) {
+	thread thr(v_thread, ref(b_fl));
+	try {
+				thr.detach();
+			} catch(const exception &ex) {
+				 cout << ex.what() << endl;
+			}
+	for (int i = 0; (i <= i_lines) && (b_fl); i++) {
+		int i_i = 0;
 		switch (i) {
 			case 0: {
 				cout << endl << endl << endl;
@@ -127,9 +137,14 @@ void v_crew() {
 				break;
 			}
 		}
+		Sleep(i_sleep);
 	}
 }
 
+void v_thread(bool &b_fl) {
+	int i_key = _getch();
+	b_fl = false;
+}
 /*
 cout << "  _____             _       _               " << endl;
 cout << " |  __ \\           | |     | |              " << endl;
