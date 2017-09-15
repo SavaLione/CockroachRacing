@@ -169,7 +169,7 @@ void v_startgame() {
 			print_select_cockroach(choice, money);
 			int x = _getch();
 			switch (x) {
-			case 72: {
+				case 72: {
 				if (choice != 1) {
 					choice--;
 				} else {
@@ -177,7 +177,7 @@ void v_startgame() {
 				}
 				break;
 			}
-			case 80: {
+				case 80: {
 				if (choice != 6) {
 					choice++;
 				} else {
@@ -185,7 +185,7 @@ void v_startgame() {
 				}
 				break;
 			}
-			case 32: {
+				case 32: {
 				selected = true;
 				i_win = engine();
 				if (i_win == choice) {
@@ -197,7 +197,7 @@ void v_startgame() {
 				}
 				break;
 			}
-			case 13: {
+				case 13: {
 				selected = true;
 				i_win = engine();
 				if (i_win == choice) {
@@ -209,7 +209,7 @@ void v_startgame() {
 				}
 				break;
 			}
-			case 27: {
+				case 27: {
 				selected = true;
 				b_fl = false;
 				b_fl_1 = false;
