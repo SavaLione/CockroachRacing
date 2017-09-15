@@ -64,48 +64,48 @@ void v_menu_main() {
 			case 13: {
 			switch (ch) {
 				case 1: {
-				point1();
-				break;
-			}
+					point1();
+					break;
+				}
 				case 2: {
-				point2();
-				break;
-			}
+					point2();
+					break;
+				}
 				case 3: {
-				point3();
-				break;
-			}
+					point3();
+					break;
+				}
 				case 4: {
-				game = true;
-				break;
-			}
+					game = true;
+					break;
+				}
 				default: {
-				break;
-			}
+					break;
+				}
 			}
 			break;
 		}
 			case 32: {
 			switch (ch) {
 				case 1: {
-				point1();
-				break;
-			}
+					point1();
+					break;
+				}
 				case 2: {
-				point2();
-				break;
-			}
+					point2();
+					break;
+				}
 				case 3: {
-				point3();
-				break;
-			}
+					point3();
+					break;
+				}
 				case 4: {
-				game = true;
-				break;
-			}
+					game = true;
+					break;
+				}
 				default: {
-				break;
-			}
+					break;
+				}
 			}
 			break;
 		}
@@ -129,9 +129,9 @@ void v_menu_main() {
 			break;
 		}
 			default: {
-			ch = 1; print_menu(ch);
-			break;
-		}
+				ch = 1; print_menu(ch);
+				break;
+			}
 		}
 	}
 }
