@@ -139,11 +139,13 @@ void v_crew() {
 		}
 		Sleep(i_sleep);
 	}
+	return;
 }
 
 void v_thread(bool &b_fl) {
 	int i_key = _getch();
 	b_fl = false;
+	return;
 }
 /*
 cout << "  _____             _       _               " << endl;

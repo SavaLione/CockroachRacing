@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <conio.h>
+#include <Windows.h>
 using namespace std;
 inline void v_engine_graphic(const int i_max1, const int i_max2, int i_m1, int i_m2, int(&i_m2_stroke)[6][101], int i_win, int i_win_stroke);
 inline void print_select_cockroach(int choice, int money);
@@ -11,7 +12,7 @@ int engine() {
 	const int i_max1 = 6, i_max2=101, i_m1 = (i_max1 - 1), i_m2 = (i_max2 - 1), i_fine = (i_m2 - 20);
 	int i_win = -1, i_win_stroke = -1;
 	bool b_fl = true, b_fl_fine = true, b_fl_win = true;
-	int i_m2_stroke[i_max1][i_max2]; // i_m2_stroke[i][z]; //if (i_m2_stroke[i][z - 1] == 0) {}
+	int i_m2_stroke[i_max1][i_max2];
 	srand(time(NULL));
 	for (int i = 0; i <= i_m1; i++) {
 		for (int z = 0; z <= i_m2; z++) {
@@ -137,7 +138,7 @@ int engine() {
 		}
 	}
 	v_engine_graphic(i_max1, i_max2, i_m1, i_m2, i_m2_stroke, i_win, i_win_stroke);
-	return i_win++;
+	return (i_win + 1);
 }
 
 void v_startgame() {
@@ -151,16 +152,17 @@ void v_startgame() {
 			while (b_fl_1) {
 				int x = _getch();
 				switch (x) {
-				case 32: {
-					b_fl_1 = false;
-					break;
-				}
-				case 13: {
-					b_fl_1 = false;
-					break;
-				}
-				default:
-					break;
+					case 32: {
+						b_fl_1 = false;
+						break;
+					}
+					case 13: {
+						b_fl_1 = false;
+						break;
+					}
+					default: {
+						break;
+					}
 				}
 			}
 		}
@@ -188,8 +190,10 @@ void v_startgame() {
 				case 32: {
 				selected = true;
 				i_win = engine();
+				v_win(i_win);
+				Sleep(750);
 				if (i_win == choice) {
-					v_win(i_win);
+					v_win(12);
 					money += 100;
 				} else {
 					v_win(10);
@@ -200,8 +204,10 @@ void v_startgame() {
 				case 13: {
 				selected = true;
 				i_win = engine();
+				v_win(i_win);
+				Sleep(750);
 				if (i_win == choice) {
-					v_win(i_win);
+					v_win(12);
 					money += 100;
 				} else {
 					v_win(10);

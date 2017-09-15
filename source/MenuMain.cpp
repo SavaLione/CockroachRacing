@@ -52,6 +52,7 @@ void point2() {
 void point3() {
 	system("cls");
 	v_crew();
+	return;
 }
 
 void v_menu_main() {
@@ -62,51 +63,51 @@ void v_menu_main() {
 		int x = _getch();
 		switch (x) {
 			case 13: {
-			switch (ch) {
-				case 1: {
-					point1();
+				switch (ch) {
+					case 1: {
+						point1();
 					break;
-				}
-				case 2: {
-					point2();
-					break;
-				}
-				case 3: {
-					point3();
-					break;
-				}
-				case 4: {
-					game = true;
-					break;
-				}
-				default: {
-					break;
-				}
+					}
+					case 2: {
+						point2();
+						break;
+					}
+					case 3: {
+						point3();
+						break;
+					}
+					case 4: {
+						game = true;
+						break;
+					}
+					default: {
+						break;
+					}
 			}
 			break;
 		}
 			case 32: {
-			switch (ch) {
-				case 1: {
-					point1();
+				switch (ch) {
+					case 1: {
+						point1();
+						break;
+					}
+					case 2: {
+						point2();
+						break;
+					}
+					case 3: {
+						point3();
+						break;
+					}
+					case 4: {
+						game = true;
+						break;
+					}
+					default: {
 					break;
 				}
-				case 2: {
-					point2();
-					break;
 				}
-				case 3: {
-					point3();
-					break;
-				}
-				case 4: {
-					game = true;
-					break;
-				}
-				default: {
-					break;
-				}
-			}
 			break;
 		}
 			case 224: {
@@ -129,7 +130,8 @@ void v_menu_main() {
 			break;
 		}
 			default: {
-				ch = 1; print_menu(ch);
+				ch = 1;
+				print_menu(ch);
 				break;
 			}
 		}
