@@ -4,6 +4,7 @@
 #include <conio.h>
 #include <Windows.h>
 using namespace std;
+
 inline void v_engine_graphic(const int i_max1, const int i_max2, int i_m1, int i_m2, int(&i_m2_stroke)[6][101], int i_win, int i_win_stroke);
 inline void print_select_cockroach(int choice, int money);
 inline void v_win(int i_win);
@@ -123,14 +124,14 @@ int engine() {
 		for (int z = 0; (z <= i_m2) && (b_fl_win); z++) {
 			switch (i_m2_stroke[i][z]) {
 				case 0: {
-				break;
-			}
+					break;
+				}
 				case 86: {
-				i_win = i;
-				i_win_stroke = z;
-				b_fl_win = false;
-				break;
-			}
+					i_win = i;
+					i_win_stroke = z;
+					b_fl_win = false;
+					break;
+				}
 				default: {
 					break;
 				}
@@ -244,4 +245,3 @@ inline void print_select_cockroach(int choice, int money) {
 		}
 	}
 }
-//Switches now finally removed

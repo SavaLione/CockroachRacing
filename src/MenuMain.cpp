@@ -1,7 +1,9 @@
 #include <iostream>
 #include <conio.h>
 #include <string>
+
 using namespace std;
+
 void v_print();
 void v_print_footer();
 void v_logo();
@@ -45,8 +47,6 @@ void point2() {
 	cout << "\tCockroach_Racing is a race-like game, where you place your bet on 1 of 6" << endl;
 	cout << "\t cockroaches, and if you get it right - you'll earn 100 credits, if not " << endl;
 	cout << "\t- lose 50 credits. When starting new game, you have 100 credits. GL HF." << endl;
-	//THERE IS NO HOPE IN THIS HELL. NO HOPE AT ALL
-	//SOOTHED. SEDATED
 }
 
 void point3() {
@@ -65,7 +65,7 @@ void v_menu_main() {
 				switch (ch) {
 					case 1: {
 						point1();
-					break;
+						break;
 					}
 					case 2: {
 						point2();
@@ -82,7 +82,7 @@ void v_menu_main() {
 					default: {
 						break;
 					}
-			}
+				}
 				break;
 			}
 			case 32: {
@@ -104,30 +104,30 @@ void v_menu_main() {
 						break;
 					}
 					default: {
-					break;
+						break;
+					}
 				}
-				}
-			break;
-		}
+				break;
+			}
 			case 224: {
-			x = _getch();
-			if (x == 77) {
-				if (ch != 4) {
-					ch++;
-				} else {
-					ch = 1;
+				x = _getch();
+				if (x == 77) {
+					if (ch != 4) {
+						ch++;
+					} else {
+						ch = 1;
+					}
 				}
-			}
-			if (x == 75) {
-				if (ch != 1) {
-					ch--;
-				} else {
-					ch = 4;
+				if (x == 75) {
+					if (ch != 1) {
+						ch--;
+					} else {
+						ch = 4;
+					}
 				}
+				print_menu(ch);
+				break;
 			}
-			print_menu(ch);
-			break;
-		}
 			default: {
 				ch = 1;
 				print_menu(ch);
@@ -167,4 +167,3 @@ inline void v_logo() {
 	cout << "                                       .`                                                  " << endl;
 	cout << "                                       `                                                   " << endl;
 }
-//2.0.1_b

@@ -2,7 +2,9 @@
 #include <thread>
 #include <conio.h>
 #include <Windows.h>
+
 using namespace std;
+
 void v_thread(bool &b_fl);
 
 void v_crew() {
@@ -10,10 +12,10 @@ void v_crew() {
 	bool b_fl = true;
 	thread thr(v_thread, ref(b_fl));
 	try {
-				thr.detach();
-			} catch(const exception &ex) {
-				 cout << ex.what() << endl;
-			}
+		thr.detach();
+	} catch(const exception &ex) {
+		cout << ex.what() << endl;
+	}
 	for (int i = 0; (i <= i_lines) && (b_fl); i++) {
 		int i_i = 0;
 		switch (i) {
@@ -139,43 +141,9 @@ void v_crew() {
 		}
 		Sleep(i_sleep);
 	}
-	return;
 }
 
 void v_thread(bool &b_fl) {
 	int i_key = _getch();
 	b_fl = false;
-	return;
 }
-/*
-cout << "  _____             _       _               " << endl;
-cout << " |  __ \\           | |     | |              " << endl;
-cout << " | |  | | __ _ _ __| | __ _| | _____  _ __  " << endl;
-cout << " | |  | |/ _` | '__| |/ _` | |/ / _ \\| '_ \\ " << endl;
-cout << " | |__| | (_| | |  | | (_| |   < (_) | | | |" << endl;
-cout << " |_____/ \\__,_|_|  |_|\\__,_|_|\\_\\___/|_| |_|" << endl;
-*/
-/*
-cout << "   _____                  _      _                  " << endl;
-cout << "  / ____|                | |    (_)                 " << endl;
-cout << " | (___   __ ___   ____ _| |     _  ___  _ __   ___ " << endl;
-cout << "  \\___ \\ / _` \\ \\ / / _` | |    | |/ _ \\| '_ \\ / _ \\" << endl;
-cout << "  ____) | (_| |\\ V / (_| | |____| | (_) | | | |  __/" << endl;
-cout << " |_____/ \\__,_| \\_/ \\__,_|______|_|\\___/|_| |_|\\___|" << endl;
-*/
-/*
-cout << "  ____                  _ _ _   " << endl;
-cout << " |  _ \\                | (_) |  " << endl;
-cout << " | |_) | __ _ _ __   __| |_| |_ " << endl;
-cout << " |  _ < / _` | '_ \\ / _` | | __|" << endl;
-cout << " | |_) | (_| | | | | (_| | | |_ " << endl;
-cout << " |____/ \\__,_|_| |_|\\__,_|_|\\__|" << endl;
-*/
-/*
-cout << "  _                           " << endl;
-cout << " | |                          " << endl;
-cout << " | |     __ _ _ __ ___   __ _ " << endl;
-cout << " | |    / _` | '_ ` _ \\ / _` |" << endl;
-cout << " | |___| (_| | | | | | | (_| |" << endl;
-cout << " |______\\__,_|_| |_| |_|\\__,_|" << endl;
-*/
