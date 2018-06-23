@@ -22,11 +22,3 @@
 
 ##  Getting Started
 Just compile (MVS)
-
-### Description of files
-
-Главная функция.
-
-```
-Main.cpp
-```
