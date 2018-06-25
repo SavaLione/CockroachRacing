@@ -2,6 +2,8 @@
 #include <string>
 #include <conio.h>
 
+#include "CockroachRacing.h"
+
 using namespace std;
 
 void v_small(int i_arg);
@@ -210,57 +212,33 @@ void v_win(int i_win) {
 	bool b_fl = true;
 	switch (i_win) {
 		case 1: {
-			cout << "  __  __          _______ _   _  _____ " << endl;
-			cout << " /_ | \\ \\        / /_   _| \\ | |/ ____|" << endl;
-			cout << "  | |  \\ \\  /\\  / /  | | |  \\| | (___  " << endl;
-			cout << "  | |   \\ \\/  \\/ /   | | | . ` |\\___ \\ " << endl;
-			cout << "  | |    \\  /\\  /   _| |_| |\\  |____) |" << endl;
-			cout << "  |_|     \\/  \\/   |_____|_| \\_|_____/ " << endl;
+			cout << cockroachracing::win1;
+			cout << endl;
 			break;
 		}
 		case 2: {
-			cout << "  ___   __          _______ _   _  _____ " << endl;
-			cout << " |__ \\  \\ \\        / /_   _| \\ | |/ ____|" << endl;
-			cout << "    ) |  \\ \\  /\\  / /  | | |  \\| | (___  " << endl;
-			cout << "   / /    \\ \\/  \\/ /   | | | . ` |\\___ \\ " << endl;
-			cout << "  / /_     \\  /\\  /   _| |_| |\\  |____) |" << endl;
-			cout << " |____|     \\/  \\/   |_____|_| \\_|_____/ " << endl;
+			cout << cockroachracing::win2;
+			cout << endl;
 			break;
 		}
 		case 3: {
-			cout << "  ____   __          _______ _   _  _____ " << endl;
-			cout << " |___ \\  \\ \\        / /_   _| \\ | |/ ____|" << endl;
-			cout << "   __) |  \\ \\  /\\  / /  | | |  \\| | (___  " << endl;
-			cout << "  |__ <    \\ \\/  \\/ /   | | | . ` |\\___ \\ " << endl;
-			cout << "  ___) |    \\  /\\  /   _| |_| |\\  |____) |" << endl;
-			cout << " |____/      \\/  \\/   |_____|_| \\_|_____/ " << endl;
+			cout << cockroachracing::win3;
+			cout << endl;
 			break;
 		}
 		case 4: {
-			cout << "  _  _    __          _______ _   _  _____ " << endl;
-			cout << " | || |   \\ \\        / /_   _| \\ | |/ ____|" << endl;
-			cout << " | || |_   \\ \\  /\\  / /  | | |  \\| | (___  " << endl;
-			cout << " |__   _|   \\ \\/  \\/ /   | | | . ` |\\___ \\ " << endl;
-			cout << "    | |      \\  /\\  /   _| |_| |\\  |____) |" << endl;
-			cout << "    |_|       \\/  \\/   |_____|_| \\_|_____/ " << endl;
+			cout << cockroachracing::win4;
+			cout << endl;
 			break;
 		}
 		case 5: {
-			cout << "  _____  __          _______ _   _  _____ " << endl;
-			cout << " | ____| \\ \\        / /_   _| \\ | |/ ____|" << endl;
-			cout << " | |__    \\ \\  /\\  / /  | | |  \\| | (___  " << endl;
-			cout << " |___ \\    \\ \\/  \\/ /   | | | . ` |\\___ \\ " << endl;
-			cout << "  ___) |    \\  /\\  /   _| |_| |\\  |____) |" << endl;
-			cout << " |____/      \\/  \\/   |_____|_| \\_|_____/ " << endl;
+			cout << cockroachracing::win5;
+			cout << endl;
 			break;
 		}
 		case 6: {
-			cout << "    __   __          _______ _   _  _____ " << endl;
-			cout << "   / /   \\ \\        / /_   _| \\ | |/ ____|" << endl;
-			cout << "  / /_    \\ \\  /\\  / /  | | |  \\| | (___  " << endl;
-			cout << " | '_ \\    \\ \\/  \\/ /   | | | . ` |\\___ \\ " << endl;
-			cout << " | (_) |    \\  /\\  /   _| |_| |\\  |____) |" << endl;
-			cout << "  \\___/      \\/  \\/   |_____|_| \\_|_____/ " << endl;
+			cout << cockroachracing::win6;
+			cout << endl;
 			break;
 		}
 		case 10: {

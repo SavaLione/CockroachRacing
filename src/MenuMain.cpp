@@ -1,169 +1,132 @@
 #include <iostream>
 #include <conio.h>
-#include <string>
+#include <curses.h>
+
+#include "CockroachRacing.h"
 
 using namespace std;
 
-void v_print();
 void v_print_footer();
 void v_logo();
 void v_startgame();
-int engine();
-void v_win(int i_win);
 void v_crew();
 
-inline void print_menu(int choice) {
-	system("cls");
-	string point[5] = { "Play" , "Help", "Crew" , "Exit", " " };
-	v_print();
-	v_logo();
-	for (int i = 1; i < 5; i++) {
-		cout << endl;
-	}
-	for (int i = 1; i < 6; i++) {
-		if (i == choice) {
-			cout << "             <";
-		} else if (i - 1 == choice) {
-			cout << ">             ";
-		} else {
-			cout << "              ";
-		}
-		cout << point[i - 1];
-	}
-	for (int i = 0; i < 4; i++) {
-		cout << endl;
-	}
-	v_print_footer();
-}
+const int POINT = 4, BUFF = 6;
+const char items[POINT][BUFF] = {
+    "Play",
+    "Help",
+    "Crew",
+    "Exit"
+};
 
 void point1() {
-	system("cls");
+	clear();
 	v_startgame();
 }
 
-void point2() {
-	system("cls");
-	v_print();
-	cout << "\tCockroach_Racing is a race-like game, where you place your bet on 1 of 6" << endl;
-	cout << "\t cockroaches, and if you get it right - you'll earn 100 credits, if not " << endl;
-	cout << "\t- lose 50 credits. When starting new game, you have 100 credits. GL HF." << endl;
-}
-
 void point3() {
-	system("cls");
+	clear();
 	v_crew();
 }
 
 void v_menu_main() {
-	int ch = 1;
-	bool game = false;
-	print_menu(ch);
-	while (!game) {
-		int x = _getch();
-		switch (x) {
-			case 13: {
-				switch (ch) {
-					case 1: {
-						point1();
-						break;
-					}
-					case 2: {
-						point2();
-						break;
-					}
-					case 3: {
-						point3();
-						break;
-					}
-					case 4: {
-						game = true;
-						break;
-					}
-					default: {
-						break;
-					}
-				}
+	initscr();
+	//char menu[POINT * BUFF];
+	string menu = "";
+	int choice = 0, row = 0, col = 0;
+	getmaxyx(stdscr, row, col);
+	bool fl = true, key = false;
+	curs_set(0);
+	keypad(stdscr, true);
+	start_color();
+	init_pair(1, COLOR_BLACK, COLOR_WHITE);
+	while (fl) {
+		menu = "";
+		clear();
+		attron(COLOR_PAIR(1));
+		mvwprintw(stdscr, 0, 0, cockroachracing::buglogoup.c_str());
+		attroff(COLOR_PAIR(1));
+		mvwprintw(stdscr, 3, 0, cockroachracing::logonew1.c_str());
+		mvwprintw(stdscr, 4, 0, cockroachracing::logonew2.c_str());
+		mvwprintw(stdscr, 5, 0, cockroachracing::logonew3.c_str());
+		mvwprintw(stdscr, 6, 0, cockroachracing::logonew4.c_str());
+		mvwprintw(stdscr, 7, 0, cockroachracing::logonew5.c_str());
+		mvwprintw(stdscr, 8, 0, cockroachracing::logonew6.c_str());
+		mvwprintw(stdscr, 9, 0, cockroachracing::logonew7.c_str());
+		mvwprintw(stdscr, 10, 0, cockroachracing::logonew8.c_str());
+		attron(COLOR_PAIR(1));
+		mvwprintw(stdscr, row - 2, 0, cockroachracing::buglogodown.c_str());
+		attroff(COLOR_PAIR(1));
+		key = false;
+		for (int i = 0; i < POINT; i++) {
+			if (i == choice)
+				menu += "                 >";
+			else
+				menu += "                  ";
+			menu += items[i];
+		}
+		//printw(menu.c_str());
+		attron(COLOR_PAIR(1));
+		mvwprintw(stdscr, row/2, 0, menu.c_str());
+		attroff(COLOR_PAIR(1));
+		switch (getch()) {
+		case KEY_UP:
+			choice--;
+			break;
+		case KEY_DOWN:
+			choice++;
+			break;
+		case KEY_LEFT:
+			choice--;
+			break;
+		case KEY_RIGHT:
+			choice++;
+			break;
+		default:
+			key = true;
+			break;
+		}
+
+		if (key) {
+			switch (choice) {
+			case 0:
+				v_startgame();
 				break;
-			}
-			case 32: {
-				switch (ch) {
-					case 1: {
-						point1();
-						break;
-					}
-					case 2: {
-						point2();
-						break;
-					}
-					case 3: {
-						point3();
-						break;
-					}
-					case 4: {
-						game = true;
-						break;
-					}
-					default: {
-						break;
-					}
-				}
+			case 1:
+				clear();
+				mvwprintw(stdscr, 0, 0, cockroachracing::buglogoup.c_str());
+				mvwprintw(stdscr, row/2, 0, cockroachracing::menuhelp.c_str());
+				mvwprintw(stdscr, row - 2, 0, cockroachracing::buglogodown.c_str());
+				getch();
 				break;
-			}
-			case 224: {
-				x = _getch();
-				if (x == 77) {
-					if (ch != 4) {
-						ch++;
-					} else {
-						ch = 1;
-					}
-				}
-				if (x == 75) {
-					if (ch != 1) {
-						ch--;
-					} else {
-						ch = 4;
-					}
-				}
-				print_menu(ch);
+			case 2:
+				clear();
+				addstr(cockroachracing::darlakon.c_str());
+				addch('\n');
+				addstr(cockroachracing::savalione.c_str());
+				addch('\n');
+				addstr(cockroachracing::bandit.c_str());
+				addch('\n');
+				addstr(cockroachracing::lama.c_str());
+				getch();
 				break;
-			}
-			default: {
-				ch = 1;
-				print_menu(ch);
+			case 3:
+				fl = false;
 				break;
 			}
 		}
+
+		if (choice >= POINT)
+			choice = 0;
+		if (choice < 0)
+			choice = POINT - 1;
 	}
 }
 
-inline void v_print() {
-	cout << "*******************************************************************************************" << endl;
-	cout << "*************************************|Cockroach_Racing|************************************" << endl;
-}
-
 inline void v_print_footer() {
-	cout << "********************|Use <- and -> for navigation and Enter to choose.|********************" << endl;
-	cout << "*******************************************************************************************";
+	cout << cockroachracing::buglogodown;
 }
 
 inline void v_logo() {
-	cout << endl;
-	cout << endl;
-	cout << endl;
-	cout << "                                                `                                          " << endl;
-	cout << "                                                `                                          " << endl;
-	cout << "                                                 `       `                                 " << endl;
-	cout << "                                                 `    ``                                   " << endl;
-	cout << "                                              ` `.- ``                                     " << endl;
-	cout << "                                             -+hh+s/                                       " << endl;
-	cout << "                                         .:oyyosyyy:                                       " << endl;
-	cout << "                                    ``.:oyyys++ss/` ``                                     " << endl;
-	cout << "                                    .-/yhyssssss/                                          " << endl;
-	cout << "                                  `:./hdhyysso-.-                                          " << endl;
-	cout << "                                `.` .ydhyo/--/-`.                                          " << endl;
-	cout << "                               `   `-/o:. .-.` .                                           " << endl;
-	cout << "                                        `-.    `                                           " << endl;
-	cout << "                                       .`                                                  " << endl;
-	cout << "                                       `                                                   " << endl;
+	cout << cockroachracing::buglogo;
 }
