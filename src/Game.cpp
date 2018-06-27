@@ -1,45 +1,35 @@
 #include <iostream>
 #include <conio.h>
 #include <curses.h>
+#include <string.h>
 
 #include "CockroachRacing.h"
 
 using namespace std;
 
-void v_print_footer();
-void v_logo();
-void v_startgame();
-void v_crew();
+string border();
 
-const int POINT = 4, BUFF = 6;
+const int POINT = 2, BUFF = 9;
 const char items[POINT][BUFF] = {
-    "Play",
-    "Help",
-    "Crew",
-    "Exit"
+    "New Game",
+    "Back"
 };
 
-void point1() {
-	clear();
-	v_startgame();
-}
+char name[128];
+unsigned int score = 0;
 
-void point3() {
-	clear();
-	v_crew();
-}
 
-void v_menu_main() {
+void game() {
 	initscr();
-	//char menu[POINT * BUFF];
 	string menu = "";
-	int choice = 0, row = 0, col = 0;
+	int choice = 0, bugs = 0, row = 0, col = 0;
 	getmaxyx(stdscr, row, col);
-	bool fl = true, key = false;
+	bool fl = true, key = false, newgame = false;
 	curs_set(0);
 	keypad(stdscr, true);
 	start_color();
 	init_pair(1, COLOR_BLACK, COLOR_WHITE);
+
 	while (fl) {
 		menu = "";
 		clear();
@@ -65,7 +55,6 @@ void v_menu_main() {
 				menu += "                  ";
 			menu += items[i];
 		}
-		//printw(menu.c_str());
 		attron(COLOR_PAIR(1));
 		mvwprintw(stdscr, row/2, 0, menu.c_str());
 		attroff(COLOR_PAIR(1));
@@ -90,27 +79,10 @@ void v_menu_main() {
 		if (key) {
 			switch (choice) {
 			case 0:
-				v_startgame();
+				newgame = true;
+				fl = false;
 				break;
 			case 1:
-				clear();
-				mvwprintw(stdscr, 0, 0, cockroachracing::buglogoup.c_str());
-				mvwprintw(stdscr, row/2, 0, cockroachracing::menuhelp.c_str());
-				mvwprintw(stdscr, row - 2, 0, cockroachracing::buglogodown.c_str());
-				getch();
-				break;
-			case 2:
-				clear();
-				addstr(cockroachracing::darlakon.c_str());
-				addch('\n');
-				addstr(cockroachracing::savalione.c_str());
-				addch('\n');
-				addstr(cockroachracing::bandit.c_str());
-				addch('\n');
-				addstr(cockroachracing::lama.c_str());
-				getch();
-				break;
-			case 3:
 				fl = false;
 				break;
 			}
@@ -121,12 +93,34 @@ void v_menu_main() {
 		if (choice < 0)
 			choice = POINT - 1;
 	}
+
+	if (newgame) {
+		clear();
+		attron(COLOR_PAIR(1));
+		mvwprintw(stdscr, 0, 0, border().c_str());
+		mvwprintw(stdscr, row - 1, 0, border().c_str());
+		attroff(COLOR_PAIR(1));
+		char namestr[] = "Enter you name: ";
+		mvprintw(row / 2, (col - strlen(namestr)) / 2, "%s", namestr);
+		getstr(name);
+
+		mvwprintw(stdscr, row - 1, 0, "Player:%s ", name);
+		curs_set(0);
+
+		refresh();
+	}
+
 }
 
-inline void v_print_footer() {
-	cout << cockroachracing::buglogodown;
+void newgame() {
+
 }
 
-inline void v_logo() {
-	cout << cockroachracing::buglogo;
+string border() {
+	string ret = "";
+	int row = 0, col = 0;
+	getmaxyx(stdscr, row, col);
+	for (int i = 0; i < col; i++)
+		ret += " ";
+	return ret;
 }
