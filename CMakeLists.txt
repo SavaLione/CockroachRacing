@@ -7,15 +7,12 @@ project (CockroachRacing)
 ################################
 set(HEADERS
 		src/CockroachRacing.h
+		src/Menu.h
 )
 
 set(SOURCES
-		src/Authors.cpp
-		src/Crew.cpp
-		src/Engine.cpp
-		src/GraphicEngine.cpp
 		src/CockroachRacing.cpp
-		src/MenuMain.cpp
+		src/Menu.cpp
 )
 
 add_executable (CockroachRacing ${HEADERS} ${SOURCES})

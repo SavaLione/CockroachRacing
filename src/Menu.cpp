@@ -1,7 +1,6 @@
-#include <iostream>
-////
-#include <stdarg.h>
-#include <functional>
+#include <string>
+#include <vector>
+
 #include <curses.h>
 
 #include "Menu.h"
@@ -11,10 +10,12 @@ Menu::Menu(std::vector<std::string> & items) :
 	setWindowSize();
 	setColor();
 	setBorder();
+	setPosition();
+	setDescription();
 	*fl = true;
 	*key = false;
 	*choice = 0;
-	//*menu = "";
+	*menu = "";
 	curs_set(0);
 	keypad(stdscr, true);
 	start_color();
@@ -25,9 +26,11 @@ Menu::~Menu() {
 	delete choice;
 	delete row;
 	delete col;
+	delete choice;
 	delete fl;
 	delete key;
 	delete[] color;
+	delete[] position;
 	delete border;
 	delete[] menu;
 }
@@ -50,6 +53,20 @@ void Menu::setColor(int text, int background) {
 	color[0] = text;
 	color[1] = background;
 }
+void Menu::setPosition() {
+	position[0] = (*row) / 4;
+	position[1] = (*col) / 4;
+}
+void Menu::setPosition(int x, int y) {
+	position[0] = x;
+	position[1] = y;
+}
+void Menu::setDescription() {
+	description.push_back("");
+}
+void Menu::setDescription(std::vector<std::string> & description) {
+	this->description = description;
+}
 
 int Menu::getMenu() {
 	while(*fl) {
@@ -58,6 +75,9 @@ int Menu::getMenu() {
 		mvwprintw(stdscr, 0, 0, (*border).c_str());
 		mvwprintw(stdscr, *row - 1, 0, (*border).c_str());
 		attroff(COLOR_PAIR(1));
+		for (int i = 0; i < (int)description.size(); i++) {
+			mvwprintw(stdscr, position[0] + i, position[1], description[i].c_str());
+		}
 		*key = false;
 		for (int i = 0; i < (int)items.size(); i++) {
 			menu[i] = "";
@@ -66,16 +86,17 @@ int Menu::getMenu() {
 			if (i == *choice) {
 				menu[i] += '>';
 				menu[i] += items[i];
+				menu[i] += '<';
 				menu[i] += '\n';
 			} else {
-				menu[i] += ' ';
+				//menu[i] += ' ';
 				menu[i] += items[i];
 				menu[i] += '\n';
 			}
 		}
 		attron(COLOR_PAIR(1));
 		for (int i = 0; i < (int)items.size(); i++) {
-			mvwprintw(stdscr, (*row / 2) + i, *col / 2, menu[i].c_str());
+			mvwprintw(stdscr, (*row / 2) + i, (*col - menu[i].size()) / 2, menu[i].c_str());
 		}
 		attroff(COLOR_PAIR(1));
 		switch (getch()) {
@@ -97,9 +118,6 @@ int Menu::getMenu() {
 			*choice = 0;
 		if (*choice < 0)
 			*choice = items.size() - 1;
-
-
-		//refresh();
 	}
 	return -1;
 }
@@ -108,17 +126,4 @@ void Menu::setBorder() {
 	*border = "";
 	for (int i = 0; i < *col; i++)
 		*border += " ";
-}
-
-void Menu::getTest() {
-	std::cout << *row << std::endl;
-	std::cout << *col << std::endl;
-	std::cout << color[0] << std::endl;
-	std::cout << color[1] << std::endl;
-	std::cout << std::endl;
-	std::cout << items.size() << std::endl;
-	std::cout << items[0] << std::endl;
-	std::cout << items[1] << std::endl;
-	std::cout << "|" << *border << "|" << std::endl;
-	std::cout << std::endl;
 }
